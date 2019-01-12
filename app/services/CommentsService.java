@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Models.Comment;
+import models.Comment;
 
 public class CommentsService {
 	public static HashSet<Comment> comments;
@@ -18,11 +18,14 @@ public class CommentsService {
 	}
 	
 	public static void initializeComments() {
+		String commentsURL = "";
+		
 		try {
-			comments = new ObjectMapper().readValue(new URL("https://jsonplaceholder.typicode.com/comments"), 
+			commentsURL = PropertiesService.getProperties().getProperty("commentsURL");
+			comments = new ObjectMapper().readValue(new URL(commentsURL), 
 										new TypeReference<HashSet<Comment>>() { } );
 		} catch(Exception e) {
-			
+			System.out.println(String.format("Error initializing comments from URL: %s. Error: %s", commentsURL, e.getMessage()));
 		}
 	}
 }

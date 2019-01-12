@@ -2,8 +2,7 @@ package controllers;
 
 import java.util.HashSet;
 
-import Models.Comment;
-
+import models.Comment;
 import play.libs.Json;
 import play.mvc.*;
 import services.CommentsService;
@@ -15,7 +14,9 @@ public class CommentsController extends Controller {
         
         	return ok(Json.toJson(comments));
     	} catch (Exception e) {
-    		return badRequest(Json.toJson(e.getMessage()));
+    		String message = String.format("Error occured while trying to fetch comments with postId: %s, Error: %s", postId, e.getMessage());
+    		System.out.println(message);
+    		return internalServerError(Json.toJson(message));
     	}
     }
 }
