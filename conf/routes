@@ -1,0 +1,5 @@
+# Routes
+
+GET		/								controllers.HomeController.index
+GET    /comments/:postId 				controllers.CommentsController.comments(postId)
+
