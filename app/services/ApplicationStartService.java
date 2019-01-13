@@ -6,10 +6,13 @@ import play.Environment;
 
 import services.CommentsService;
 
+/**
+ * This service handle all the application initialization
+ */
 @Singleton
-public class ApplicationStart {
+public class ApplicationStartService {
 	@Inject
-	public ApplicationStart(ApplicationLifecycle lifecycle, Environment environment) {
+	public ApplicationStartService(ApplicationLifecycle lifecycle, Environment environment) {
 		CommentsService.initializeComments();
 	}
 }

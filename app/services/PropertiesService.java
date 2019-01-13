@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * This service holds the application configuration
+ */
 public class PropertiesService {
 	private static String propertiesFile = "application.properties";
 	private static Properties properties;
